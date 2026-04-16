@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campina Imóveis - Demonstração Novo Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .brand-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #e63946;
+        }
+
+        /* SEÇÃO PRINCIPAL */
+        .demo-section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* GRID DE IMÓVEIS */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .property-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* IMAGEM GRANDE EM DESTAQUE */
+        .property-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background-color: #e0e0e0;
+        }
+
+        .property-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .property-card:hover .property-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        /* PREÇO SOBREPOSTO NA IMAGEM */
+        .property-price-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.4));
+            color: white;
+            padding: 20px;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        /* BADGE NO CANTO SUPERIOR */
+        .property-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #ffd700;
+            color: #1a1a1a;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .property-content {
+            padding: 25px;
+        }
+
+        .property-type {
+            color: #e63946;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .property-title {
+            font-size: 1.3rem;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .property-location {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .property-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        .property-details div {
+            text-align: center;
+        }
+
+        .property-details strong {
+            display: block;
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+
+        .property-details span {
+            display: block;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .property-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #e63946;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .property-button:hover {
+            background-color: #c1121f;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 40px 0 20px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #e63946;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+            color: #999;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .properties-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-menu {
+                gap: 15px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .properties-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <span class="brand-name">🏢 Campina Imóveis</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link">Home</a></li>
+                    <li><a href="#" class="nav-link">Imóveis</a></li>
+                    <li><a href="#" class="nav-link">Sobre</a></li>
+                    <li><a href="#" class="nav-link">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- SEÇÃO PRINCIPAL -->
+    <main class="demo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Imóveis em Destaque</h2>
+                <p class="section-subtitle">Conheça nossos melhores imóveis disponíveis</p>
+            </div>
+
+            <div class="properties-grid">
+                <!-- CARD 1 -->
+                <div class="property-card">
+                    <div class="property-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop" alt="Apartamento Moderno">
+                        <span class="property-badge">À Venda</span>
+                        <div class="property-price-overlay">R$ 250.000</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Apartamento</div>
+                        <h3 class="property-title">Apartamento Moderno no Centro</h3>
+                        <div class="property-location">📍 Centro, Campina Grande</div>
+                        <div class="property-details">
+                            <div>
+                                <strong>2</strong>
+                                <span>Quartos</span>
+                            </div>
+                            <div>
+                                <strong>1</strong>
+                                <span>Banheiro</span>
+                            </div>
+                            <div>
+                                <strong>65</strong>
+                                <span>m²</span>
+                            </div>
+                        </div>
+                        <button class="property-button">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="property-card">
+                    <div class="property-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1570129477492-45a003537e1f?w=400&h=300&fit=crop" alt="Casa Espaçosa">
+                        <span class="property-badge">À Venda</span>
+                        <div class="property-price-overlay">R$ 350.000</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Casa</div>
+                        <h3 class="property-title">Casa Espaçosa no Bodocongó</h3>
+                        <div class="property-location">📍 Bodocongó, Campina Grande</div>
+                        <div class="property-details">
+                            <div>
+                                <strong>3</strong>
+                                <span>Quartos</span>
+                            </div>
+                            <div>
+                                <strong>2</strong>
+                                <span>Banheiros</span>
+                            </div>
+                            <div>
+                                <strong>120</strong>
+                                <span>m²</span>
+                            </div>
+                        </div>
+                        <button class="property-button">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="property-card">
+                    <div class="property-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop" alt="Terreno">
+                        <span class="property-badge">À Venda</span>
+                        <div class="property-price-overlay">R$ 150.000</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Terreno</div>
+                        <h3 class="property-title">Terreno no Prado</h3>
+                        <div class="property-location">📍 Prado, Campina Grande</div>
+                        <div class="property-details">
+                            <div>
+                                <strong>-</strong>
+                                <span>Quartos</span>
+                            </div>
+                            <div>
+                                <strong>-</strong>
+                                <span>Banheiros</span>
+                            </div>
+                            <div>
+                                <strong>500</strong>
+                                <span>m²</span>
+                            </div>
+                        </div>
+                        <button class="property-button">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="property-card">
+                    <div class="property-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&h=300&fit=crop" alt="Apartamento Aconchegante">
+                        <span class="property-badge">À Venda</span>
+                        <div class="property-price-overlay">R$ 180.000</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Apartamento</div>
+                        <h3 class="property-title">Apartamento Aconchegante</h3>
+                        <div class="property-location">📍 Liberdade, Campina Grande</div>
+                        <div class="property-details">
+                            <div>
+                                <strong>1</strong>
+                                <span>Quarto</span>
+                            </div>
+                            <div>
+                                <strong>1</strong>
+                                <span>Banheiro</span>
+                            </div>
+                            <div>
+                                <strong>45</strong>
+                                <span>m²</span>
+                            </div>
+                        </div>
+                        <button class="property-button">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <!-- CARD 5 -->
+                <div class="property-card">
+                    <div class="property-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop" alt="Cobertura Luxuosa">
+                        <span class="property-badge">À Venda</span>
+                        <div class="property-price-overlay">R$ 450.000</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Cobertura</div>
+                        <h3 class="property-title">Cobertura Luxuosa</h3>
+                        <div class="property-location">📍 Alto Branco, Campina Grande</div>
+                        <div class="property-details">
+                            <div>
+                                <strong>3</strong>
+                                <span>Quartos</span>
+                            </div>
+                            <div>
+                                <strong>2</strong>
+                                <span>Banheiros</span>
+                            </div>
+                            <div>
+                                <strong>150</strong>
+                                <span>m²</span>
+                            </div>
+                        </div>
+                        <button class="property-button">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <!-- CARD 6 -->
+                <div class="property-card">
+                    <div class="property-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1576941160550-2173dba999ef?w=400&h=300&fit=crop" alt="Apartamento Duplex">
+                        <span class="property-badge">À Venda</span>
+                        <div class="property-price-overlay">R$ 320.000</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Duplex</div>
+                        <h3 class="property-title">Apartamento Duplex</h3>
+                        <div class="property-location">📍 Jardim Paulista, Campina Grande</div>
+                        <div class="property-details">
+                            <div>
+                                <strong>2</strong>
+                                <span>Quartos</span>
+                            </div>
+                            <div>
+                                <strong>2</strong>
+                                <span>Banheiros</span>
+                            </div>
+                            <div>
+                                <strong>90</strong>
+                                <span>m²</span>
+                            </div>
+                        </div>
+                        <button class="property-button">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre</h3>
+                    <ul>
+                        <li><a href="#">Quem Somos</a></li>
+                        <li><a href="#">Nossa Missão</a></li>
+                        <li><a href="#">Valores</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="#">Imóveis</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><a href="#">(83) 3063-2323</a></li>
+                        <li><a href="#">(83) 99893-4950</a></li>
+                        <li><a href="#">contato@campinaimoveis.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Redes Sociais</h3>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Campina Imóveis. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campina Imóveis - Encontre Seu Imóvel Perfeito em Campina Grande</title>
+    <meta name="description" content="Campina Imóveis - A melhor imobiliária de Campina Grande. Encontre apartamentos, casas e terrenos com os melhores preços.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carousel.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="tel:+5583306323323" class="contact-link">
+                        <span class="icon">📞</span> (83) 3063-2323
+                    </a>
+                    <a href="https://wa.me/5583999934950" target="_blank" class="contact-link">
+                        <span class="icon">💬</span> (83) 99893-4950
+                    </a>
+                </div>
+                <div class="header-links">
+                    <a href="#" class="link">Nosso Instagram</a>
+                    <a href="#" class="link">Anuncie seu imóvel</a>
+                    <a href="#" class="link">Entrar</a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo-section">
+                    <img src="images/logo.jpeg" alt="Campina Imóveis" class="logo">
+                    <span class="brand-name">Campina Imóveis</span>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#imoveis" class="nav-link">Imóveis</a></li>
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                </ul>
+
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary">Anunciar Imóvel</button>
+                    <button class="btn btn-primary">Entrar</button>
+                </div>
+
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION COM CAROUSEL -->
+    <section class="hero" id="home">
+        <div class="carousel-container">
+            <div class="carousel-wrapper">
+                <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=600&fit=crop');">
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-content">
+                        <h1>Encontre Seu Imóvel Perfeito</h1>
+                        <p>Os melhores imóveis de Campina Grande</p>
+                        <a href="#imoveis" class="btn btn-primary">Ver Imóveis</a>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=600&fit=crop');">
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-content">
+                        <h1>Casas e Apartamentos</h1>
+                        <p>Qualidade e segurança garantidas</p>
+                        <a href="#imoveis" class="btn btn-primary">Explorar</a>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45a003537e1f?w=1200&h=600&fit=crop');">
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-content">
+                        <h1>Investimento Seguro</h1>
+                        <p>Oportunidades com os melhores corretores</p>
+                        <a href="#contato" class="btn btn-primary">Fale Conosco</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn prev" onclick="changeCarouselSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn next" onclick="changeCarouselSlide(1)"><i class="fas fa-chevron-right"></i></button>
+            <div class="carousel-dots">
+                <span class="dot active" onclick="currentCarouselSlide(0)"></span>
+                <span class="dot" onclick="currentCarouselSlide(1)"></span>
+                <span class="dot" onclick="currentCarouselSlide(2)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEARCH BAR -->
+    <section class="search-section">
+        <div class="container">
+            <form class="search-form" id="searchForm">
+                <div class="form-group">
+                    <label for="transacao">Transação</label>
+                    <select id="transacao" class="form-control">
+                        <option value="venda">Venda</option>
+                        <option value="aluguel">Aluguel</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo">Tipo de Imóvel</label>
+                    <select id="tipo" class="form-control">
+                        <option value="">Todos os tipos</option>
+                        <option value="Apartamento">Apartamento</option>
+                        <option value="Casa">Casa</option>
+                        <option value="Terreno">Terreno</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bairro">Bairro/Localidade</label>
+                    <input type="text" id="bairro" class="form-control" placeholder="Digite o bairro ou cidade">
+                </div>
+
+                <button type="submit" class="btn btn-search">Buscar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FEATURED PROPERTIES -->
+    <section class="featured-section" id="imoveis">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Imóveis em Destaque</h2>
+                <p class="section-subtitle">Conheça nossos melhores imóveis disponíveis</p>
+            </div>
+
+            <div class="properties-grid" id="propertiesGrid">
+                <!-- Imóveis carregarão dinamicamente aqui -->
+            </div>
+
+            <div class="section-footer">
+                <a href="#" class="btn btn-outline">Ver Todos os Imóveis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFFERENTIALS SECTION -->
+    <section class="differentials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Por Que Escolher Campina Imóveis?</h2>
+            </div>
+
+            <div class="differentials-grid">
+                <div class="differential-card">
+                    <div class="differential-icon">🏠</div>
+                    <h3>Imóveis Selecionados</h3>
+                    <p>Apenas os melhores imóveis de Campina Grande e região</p>
+                </div>
+
+                <div class="differential-card">
+                    <div class="differential-icon">👥</div>
+                    <h3>Corretores Experientes</h3>
+                    <p>Profissionais qualificados prontos para ajudar você</p>
+                </div>
+
+                <div class="differential-card">
+                    <div class="differential-icon">💰</div>
+                    <h3>Melhores Preços</h3>
+                    <p>Negociamos os melhores valores para você</p>
+                </div>
+
+                <div class="differential-card">
+                    <div class="differential-icon">🔒</div>
+                    <h3>100% Seguro</h3>
+                    <p>Transações seguras e documentação completa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+            </div>
+
+            <div class="testimonials-grid" id="testimonialsGrid">
+                <!-- Depoimentos carregarão dinamicamente aqui -->
+            </div>
+        </div>
+    </section>
+
+    <!-- BROKERS SECTION -->
+    <section class="brokers-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Conheça Nossos Corretores</h2>
+                <p class="section-subtitle">Profissionais experientes prontos para ajudar você</p>
+            </div>
+
+            <div class="brokers-grid" id="brokersGrid">
+                <!-- Corretores carregarão dinamicamente aqui -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Pronto para Encontrar Seu Imóvel?</h2>
+            <p>Fale com um de nossos corretores e comece sua jornada</p>
+            <button class="btn btn-light" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'})">
+                Fale com um Consultor
+            </button>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section class="contact-section" id="contato">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info-box">
+                    <h3>Entre em Contato</h3>
+                    <p>Preencha o formulário e um de nossos corretores entrará em contato com você em breve.</p>
+
+                    <div class="contact-details">
+                        <div class="detail">
+                            <span class="icon">📞</span>
+                            <div>
+                                <strong>Telefone</strong>
+                                <p>(83) 3063-2323</p>
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <span class="icon">📧</span>
+                            <div>
+                                <strong>Email</strong>
+                                <p>contato@campinaimoveis.com</p>
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <span class="icon">📍</span>
+                            <div>
+                                <strong>Endereço</strong>
+                                <p>Rua Principal, 123 - Campina Grande, PB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Seu Nome" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Seu Email" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Sua Mensagem" rows="5" required class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-background"></div>
+
+        <!-- FOOTER MAIN CONTENT -->
+        <div class="container">
+            <!-- COMECE AGORA SECTION -->
+            <div class="footer-section-full">
+                <h3>Comece Agora</h3>
+                <p>Cadastre-se e receba informações sobre os melhores imóveis de Campina Grande</p>
+
+                <form class="cadastro-form" id="formCadastroCliente" onsubmit="cadastrarCliente(event)">
+                    <div class="form-row">
+                        <input type="text" id="nomeCliente" placeholder="Seu Nome" required class="form-control">
+                        <input type="tel" id="telefoneCliente" placeholder="Seu Telefone" required class="form-control">
+                    </div>
+                    <div class="form-row">
+                        <select id="tipoImovelCliente" required class="form-control">
+                            <option value="">Tipo de Imóvel</option>
+                            <option value="Apartamento">Apartamento</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Terreno">Terreno</option>
+                        </select>
+                        <input type="text" id="bairroCliente" placeholder="Bairro Desejado" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </form>
+            </div>
+
+            <!-- FALE COM CONSULTOR SECTION -->
+            <div class="footer-section-full">
+                <h3>Fale com um Consultor</h3>
+                <p>Conheça nossos corretores e escolha o que melhor se adequa ao seu perfil</p>
+
+                <div class="corretores-grid" id="listaCorretores">
+                    <!-- Corretores carregarão dinamicamente aqui -->
+                </div>
+            </div>
+
+            <!-- FOOTER CONTENT -->
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sobre Nós</h4>
+                    <p>Campina Imóveis é a melhor imobiliária de Campina Grande, com anos de experiência no mercado imobiliário.</p>
+                    <div class="company-info">
+                        <p><strong>CRECI:</strong> 123456-F/PB</p>
+                        <p><strong>Endereço:</strong> Rua Principal, 123 - Centro, Campina Grande, PB</p>
+                        <p><strong>Horário:</strong> Seg-Sex: 08:00-18:00 | Sáb: 09:00-13:00</p>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#imoveis">Imóveis</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#" onclick="showTerms()">Termos e Condições</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="tel:+5583306323323">📞 (83) 3063-2323</a></li>
+                        <li><a href="https://wa.me/5583999934950" target="_blank">💬 (83) 99893-4950</a></li>
+                        <li><a href="mailto:contato@campinaimoveis.com">📧 contato@campinaimoveis.com</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                        <a href="#" class="social-link">YouTube</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER BOTTOM -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 Campina Imóveis. Todos os direitos reservados. | <a href="#" onclick="showTerms()">Termos e Condições</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP BUTTON -->
+    <a href="https://wa.me/5583999934950" target="_blank" class="whatsapp-button" title="Fale conosco no WhatsApp">
+        <span class="whatsapp-icon">💬</span>
+    </a>
+
+    <!-- TERMS MODAL -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeTerms()">&times;</span>
+            <h2>Termos e Condições</h2>
+            <div class="terms-body">
+                <h3>1. Aceitação dos Termos</h3>
+                <p>Ao acessar e usar este site, você aceita estar vinculado por estes termos e condições.</p>
+
+                <h3>2. Uso do Site</h3>
+                <p>Você concorda em usar este site apenas para fins legais e de forma que não infrinja os direitos de terceiros.</p>
+
+                <h3>3. Propriedade Intelectual</h3>
+                <p>Todo o conteúdo deste site é propriedade de Campina Imóveis ou seus fornecedores de conteúdo.</p>
+
+                <h3>4. Isenção de Responsabilidade</h3>
+                <p>Este site é fornecido "no estado em que se encontra" sem garantias de qualquer tipo.</p>
+
+                <h3>5. Limitação de Responsabilidade</h3>
+                <p>Campina Imóveis não será responsável por danos indiretos, incidentais ou consequentes.</p>
+            </div>
+            <button class="btn btn-primary" onclick="closeTerms()">Fechar</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
